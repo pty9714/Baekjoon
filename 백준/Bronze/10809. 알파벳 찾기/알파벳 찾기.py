@@ -1,7 +1,7 @@
-from string import ascii_lowercase
+#10809
 dict = {} 
-for i in ascii_lowercase:
-    dict[i] = -1 # dict에 {'a':-1, 'b':-1 ..., 'z':-1} 입력
+for i in range(ord('a'),ord('z')+1):
+    dict[chr(i)] = -1 # dict에 {'a':-1, 'b':-1 ..., 'z':-1} 입력
 
 a = list(input())
 count = 0 # 몇번째에 등장하는지 세는 자리수
