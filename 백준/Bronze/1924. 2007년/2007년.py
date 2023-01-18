@@ -14,18 +14,5 @@ for i in range(1,a):
     total += day(i)
 
 total += b
-
-if total%7 ==1:
-    print('MON')
-elif total%7 ==2:
-    print('TUE')
-elif total%7 ==3:
-    print('WED')
-elif total%7 ==4:
-    print('THU')
-elif total%7 ==5:
-    print('FRI')
-elif total%7 ==6:
-    print('SAT')
-elif total%7 ==0:
-    print('SUN')
+answer = ['SUN','MON','TUE','WED','THU','FRI','SAT']
+print(answer[total%7])
