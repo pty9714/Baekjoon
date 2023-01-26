@@ -6,7 +6,7 @@ if a+b+c !=180:
 else:
     if a!=b and b!=c and c!=a:
         print('Scalene')
-    elif a==b and b==c and c==a:
+    elif a^b^c==60:
         print('Equilateral')
     else:
         print('Isosceles')
