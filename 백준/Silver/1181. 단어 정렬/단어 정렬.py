@@ -1,9 +1,9 @@
 a = int(input())
-L = []
+L = set([])
 for i in range(a):
     x= input()
-    L.append(x)
-L = list(set(L))
+    L.add(x)
+L = list(L)
 L.sort(key = lambda x: (len(x),x))
 
 for i in L:
