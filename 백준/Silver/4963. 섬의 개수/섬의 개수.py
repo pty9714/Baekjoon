@@ -1,13 +1,14 @@
+
+di = [-1,0,1]
+d = [(x,y) for x in di for y in di]
+d.remove((0,0))
+
+
 while True:
   a,b = map(int,input().split())
   if a == 0 and b == 0 :
     break
-
-  di = [-1,0,1]
-  d = [(x,y) for x in di for y in di]
-  d.remove((0,0))
-
-
+    
   check = [False] *(a*b +1)
   graph = [[] for _ in range(a*b +1)]
   l=[]
