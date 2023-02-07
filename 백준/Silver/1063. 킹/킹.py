@@ -1,3 +1,5 @@
+import sys
+input= sys.stdin.readline
 M = { 'R':(1,0), 'L':(-1,0), 'B':(0,1), 'T':(0,-1)}
 king, stone, move = input().split()
 
@@ -9,9 +11,8 @@ a2,b2 = stone
 sx = ord(a2)-ord('A')
 sy = 8-int(b2)
 
-
 for _ in range(int(move)):
-  dir = input()
+  dir = input().rstrip()
   dx = 0
   dy = 0
   for i in dir:
