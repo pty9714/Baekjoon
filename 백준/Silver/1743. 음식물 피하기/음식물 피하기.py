@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 n,m,k= map(int,input().split())
 graph = [[0]*m for _ in range(n)]
 mf = 0
