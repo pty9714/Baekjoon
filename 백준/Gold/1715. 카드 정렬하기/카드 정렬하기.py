@@ -1,5 +1,6 @@
 import heapq
-
+import sys
+input = sys.stdin.readline
 num = int(input())
 heap = []
 heapq.heapify(heap)
