@@ -11,7 +11,7 @@ for i in range(a):
         if deq:
             deq.appendleft(numl.pop())
             ans +=deq
-            deq = deque([])
+            deq.clear()
         else:
             ans.append(numl.pop())
     elif l[i] == 2:
