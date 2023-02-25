@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 dp = [[[0 for _ in range(51)] for _ in range(51)] for _ in range(51)]
 def w1(a,b,c):
     for i in range(a+1):
