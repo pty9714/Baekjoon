@@ -1,28 +1,26 @@
+import sys
+input=sys.stdin.readline
 import itertools
-
-n=int(input())
-
-people=[i for i in range(n)]
-S=[[0] for _ in range(n)]
-
-for i in range(n) :
-    S[i]=list(map(int, input().split()))
-
-#순열을 이용하여 짝수로 2개의 팀을 나눔
-teams=list(itertools.combinations(people, int(n/2)))
-min=100*n*n
-for team in teams : #두 팀의 능력치 차이 계산
-    team_A=0
-    team_B=0
-    for i in team : #순열로 짝 지은 팀에 포함된 사람들의 능력치 구함
-        for j in team:
-            team_A+=S[i][j]
-    not_team=[x for x in range(n) if x not in team] #순열로 구한 팀에 속하지 않는 사람들
-    for i in not_team :
-        for j in not_team :
-            team_B+=S[i][j]
+num = int(input())
+people=[i for i in range(num)] 
+graph = []
+for i in range(num):
+    graph.append(list(map(int,input().split())))
+res = 100*num*num
+       
+team = list(itertools.combinations(people,num//2))
+for t in team:
+    start = 0
+    link = 0
+    nt = [x for x in range(num) if x not in t]
+    for i in t:
+        for j in t:
+            start += graph[i][j]
     
-    if min>abs(team_A-team_B) :
-        min=abs(team_A-team_B)
+    for i in nt:
+        for j in nt:
+            link += graph[i][j]
 
-print(min)
+    res = min(res, abs(start-link))
+
+print(res)
