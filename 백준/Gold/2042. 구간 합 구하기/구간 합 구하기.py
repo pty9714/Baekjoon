@@ -1,6 +1,7 @@
 N,M,K = map(int,input().split())
+
 def lsb(i):
-    return int(bin(i&(~i+1)),2)
+    return i&-i
 
 def lst_renewal(index,value):
     while True:
