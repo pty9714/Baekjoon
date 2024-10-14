@@ -1,18 +1,17 @@
-a = int(input())
+n = int(input())
 l = []
-
 k = 0
-for _ in range(a):
-    x,y = map(int,input().split())
-    k = max(k,x)
-    l.append((x,y))
+for i in range(n):
+    a,b = map(int,input().split())
+    k = max(k,a)
+    l.append((a,b))
+answer = [0]*k
 
-l = sorted(l,key = lambda x : -x[1])
-ans = [0]*(k+1)
-for x,y in l:
-    for k in range(x,0,-1):
-        if ans[k] == 0:
-            ans[k] = y
+l.sort(key=lambda x: (-x[1],x[0]))
+
+for i in l:
+    for j in range(i[0]-1,-1,-1):
+        if not answer[j]:
+            answer[j] = i[1]
             break
-print(sum(ans))
-        
+print(sum(answer))
