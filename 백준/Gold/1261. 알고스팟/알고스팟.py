@@ -1,24 +1,34 @@
-from collections import deque
-dx = [1,-1,0,0]
-dy = [0,0,1,-1]
-m,n = map(int, input().split())
-l = [list(map(int, input())) for _ in range(n)]
-dist = [[-1] * m for _ in range(n)]  # 가중치
+import heapq
 
-q = deque()
-q.append((0,0))
-dist[0][0] = 0
-while q:
-    x,y = q.popleft()
-    for k in range(4):
-        mx = x + dx[k]
-        my = y + dy[k]
-        if 0 <= mx < m and 0 <= my < n:
-            if dist[my][mx] == -1:
-                if l[my][mx] == 0:
-                    dist[my][mx] = dist[y][x]
-                    q.appendleft((mx, my))
-                else:
-                    dist[my][mx] = dist[y][x] + 1
-                    q.append((mx, my))
-print(dist[n-1][m-1])
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+
+n, m = map(int, input().split())
+l = []
+for i in range(m):
+    l.append(list(map(int, input().strip())))
+
+min_cost = [[float('inf')] * n for _ in range(m)]
+min_cost[0][0] = 0
+
+heap = []
+heapq.heappush(heap, (0, 0, 0)) 
+
+while heap:
+    cost, y, x = heapq.heappop(heap)
+
+    if y == m - 1 and x == n - 1:
+        print(cost)
+        break
+
+    if cost > min_cost[y][x]:
+        continue
+
+    for i in range(4):
+        ny, nx = y + dy[i], x + dx[i]
+
+        if 0 <= ny < m and 0 <= nx < n:
+            new_cost = cost + (1 if l[ny][nx] == 1 else 0)
+            if new_cost < min_cost[ny][nx]:
+                min_cost[ny][nx] = new_cost
+                heapq.heappush(heap, (new_cost, ny, nx))
